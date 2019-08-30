@@ -1,29 +1,42 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <header>
+      <router-link to="/home" tag="span">首页</router-link> 
+      <router-link to="/classify" tag="span">分类</router-link>
+      <router-link to="/paihang" tag="span">排行</router-link>
+      <router-link to="/bookrack" tag="span">书架</router-link>
+    </header>
+    <main>
+      <router-view/>
+    </main>
+    
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+html,body,#app{
+  width: 100%;
+  height: 100%;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+#app {
+  display: flex;
+  flex-direction: column;
+  header{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background: #888;
+    color: #eee;
+    display: flex;
+    span{
+      flex: 1;
+      text-align: center;
+      &.router-link-active{
+        background: #000;
+        color: #fff;
+      }
     }
   }
 }
+
 </style>
