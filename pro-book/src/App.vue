@@ -12,7 +12,25 @@
     
   </div>
 </template>
+<script>
+import {mapActions,mapState} from 'vuex'
+export default {
+  data(){
+    return {
+      ...mapState(['list'])
+    }
+  },
+  computed:{
 
+  },
+  methods:{
+    ...mapActions(['getData'])
+  },
+  created(){
+    this.getData();
+  }
+}
+</script>
 <style lang="scss">
 *{
   margin: 0;padding: 0;
@@ -43,6 +61,9 @@ html,body,#app{
       }
     }
   }
+}
+main{
+  flex: 1;
 }
 
 </style>

@@ -31,7 +31,23 @@ export default new Router({
             path: '/bookrack',
             name: 'bookrack',
             component: () =>
-                import ('./views/bookrack.vue')
+                import ('./views/bookrack.vue'),
+            children: [{
+                    path: 'bookrack',
+                    redirect: 'myrack'
+                }, {
+                    path: 'myrack',
+                    name: 'myrack',
+                    component: () =>
+                        import ('./views/myList.vue')
+                },
+                {
+                    path: 'lately',
+                    name: 'lately',
+                    component: () =>
+                        import ('./views/lately.vue')
+                }
+            ]
         }
     ]
 })
