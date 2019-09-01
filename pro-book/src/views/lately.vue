@@ -1,13 +1,13 @@
 <template>
     <div class="list">
         <dl v-for="(item) in latey" :key="item.bookId">
-            <dt><img :src="item.coverUrl" alt=""></dt>
+            <router-link tag="dt" :to="{name:'details',params:{id:item.bookId}}"><img :src="item.coverUrl" alt=""></router-link>
             <dd>
                 <h3>《{{item.bookName}}》</h3>
                 <p>作者：{{item.authorName}}</p>
                 <p>最新：{{item.updteChapterName}}</p>
-                <p>简介：{{item.description}}</p>
-                <button v-if="flag" @click="deleteDataLateyItem(item.bookId)">删除</button>
+                <p class="text">简介：{{item.description}}</p>
+                <button v-if="flag" @click.capture="deleteDataLateyItem(item.bookId)">删除</button>
             </dd>
         </dl>
     </div>
@@ -41,12 +41,13 @@ import {mapState,mapMutations} from 'vuex'
             
             dl{
                 width: 100%;
-                height: 200px;
+                height: 120px;
                 display: flex;
                 overflow: hidden;
+                padding: 10px;
                 dt{
                     width: 100px;
-                    height: 180px;
+                    height: 100px;
                     img{
                         width: 100%;
                         height: 100%;
@@ -54,8 +55,21 @@ import {mapState,mapMutations} from 'vuex'
                 }
                 dd{
                     flex: 1;
+                    overflow: hidden;
                     padding-left: 20px;
-                    font-size: 12px;
+                    
+                    position: relative;
+                    .text{
+                        width: 100%;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                    button{
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                    }
                 }
             }
         }

@@ -1,17 +1,8 @@
 <template>
     <div class="wrap">
         <div class="list">
-        <dl v-for="(item) in myList" :key="item.bookId">
-            <dt><img :src="item.coverUrl" alt=""></dt>
-            <dd>
-                <h3>《{{item.bookName}}》</h3>
-                <p>作者：{{item.authorName}}</p>
-                <p>最新：{{item.updteChapterName}}</p>
-                <p>简介：{{item.description}}</p>
-                <button v-if="flag" @click="deleteDataListItem(item.bookId)">删除</button>
-            </dd>
-        </dl>
-    </div>
+            
+        </div>
     </div>
 </template>
 
@@ -25,10 +16,10 @@ import {mapState,mapMutations} from 'vuex'
             }
         },
         computed:{
-            ...mapState(['myList','flag'])
+            ...mapState([])
         },
         methods:{
-            ...mapMutations(['deleteDataListItem'])
+            ...mapMutations([])
         }
     }
 </script>
@@ -41,12 +32,13 @@ import {mapState,mapMutations} from 'vuex'
             width: 100%;
             dl{
                 width: 100%;
-                height: 200px;
+                height: 120px;
                 display: flex;
                 overflow: hidden;
+                padding: 10px;
                 dt{
                     width: 100px;
-                    height: 180px;
+                    height: 100px;
                     img{
                         width: 100%;
                         height: 100%;
@@ -55,7 +47,20 @@ import {mapState,mapMutations} from 'vuex'
                 dd{
                     flex: 1;
                     padding-left: 20px;
-                    font-size: 12px;
+                   
+                    position: relative;
+                    overflow: hidden;
+                    .text{
+                        width: 100%;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                    button{
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                    }
                 }
             }
         }

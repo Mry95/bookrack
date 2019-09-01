@@ -48,6 +48,12 @@ export default new Router({
                         import ('./views/lately.vue')
                 }
             ]
+        },
+        {
+            path: '/details',
+            name: 'details',
+            component: () =>
+                import ('./views/details.vue')
         }
     ]
 })
