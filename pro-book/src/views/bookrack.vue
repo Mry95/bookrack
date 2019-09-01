@@ -5,7 +5,6 @@
             <router-link tag="span" to="/bookrack/lately">最近阅读</router-link>
         </div>
         <div class="conten">
-            <button @click="changeFlag">编辑</button>
             <router-view></router-view>
         </div>
     </div>

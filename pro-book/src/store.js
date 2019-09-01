@@ -11,6 +11,7 @@ export default new Vuex.Store({
         itemList: [], //热门列表
         addList: [], //我的书架列表
         flag: false, //插旗
+        myBook: [], //我的书架数据
     },
     mutations: {
         //获取总数居
@@ -25,9 +26,8 @@ export default new Vuex.Store({
         getItemList(state, payload) {
             state.itemList = payload
         },
-        //加入书架
+        //执行的时候改变该子项的状态
         changeAddList(state, { id, index }) {
-
             state.list['ranklist' + index] = state.list['ranklist' + index].map(item => {
                 if (item.bookId == id) {
                     item.serialStatus = 1
@@ -36,6 +36,8 @@ export default new Vuex.Store({
             });
             console.log(state.list)
         },
+
+
         //改变默认插旗
         changeFlag(state, payload) {
             state.flag = !state.flag
@@ -55,6 +57,16 @@ export default new Vuex.Store({
                     return item
                 }
             })
+        }
+    },
+    getters: {
+        myBook(state, payload) {
+            console.log(state)
+            let arr = [];
+            for (let k in state.list) {
+                arr = [...state.list[k].filter(item => item.serialStatus)]
+            }
+            return arr
         }
     },
     actions: {

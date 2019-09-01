@@ -1,15 +1,6 @@
 <template>
     <div class="list">
-        <dl v-for="(item) in latey" :key="item.bookId">
-            <router-link tag="dt" :to="{name:'details',params:{id:item.bookId}}"><img :src="item.coverUrl" alt=""></router-link>
-            <dd>
-                <h3>《{{item.bookName}}》</h3>
-                <p>作者：{{item.authorName}}</p>
-                <p>最新：{{item.updteChapterName}}</p>
-                <p class="text">简介：{{item.description}}</p>
-                <button v-if="flag" @click.capture="deleteDataLateyItem(item.bookId)">删除</button>
-            </dd>
-        </dl>
+        最近阅读
     </div>
 </template>
 

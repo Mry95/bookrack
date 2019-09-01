@@ -1,14 +1,27 @@
 <template>
     <div class="wrap">
         <div class="list">
-            
+            <Item v-for="(item,index) in myBook" :key="index">
+                <router-link tag="dt" :to="{name:'details',params:  {id:item.bookId}}"><img :src="item.coverUrl" alt="">
+                </router-link>
+                <dd>
+                    <h3>《{{item.bookName}}》</h3>
+                    <p>作者：{{item.authorName}}</p>
+                    <p>最新：{{item.updteChapterName}}</p>
+                    <p class="text">简介：{{item.description}}</p>
+                </dd>
+            </Item>
         </div>
     </div>
 </template>
 
 <script>
-import {mapState,mapMutations} from 'vuex'
+import {mapState,mapMutations,mapGetters} from 'vuex'
+import Item from '@/components/item'
     export default {
+        components:{
+            Item
+        },
         name: '',
         data() {
             return {
@@ -16,11 +29,14 @@ import {mapState,mapMutations} from 'vuex'
             }
         },
         computed:{
-            ...mapState([])
+            ...mapGetters(['myBook']),
         },
         methods:{
             ...mapMutations([])
-        }
+        },
+        created() {
+            console.log(this.myBook)
+        },
     }
 </script>
 
